@@ -18,19 +18,19 @@ if __name__ == '__main__':
     parameters = {}
     methods = []
     if args.coefficient:
-        print("Temperature coefficient value: ", args.coefficient)
+        #print("Temperature coefficient value: ", args.coefficient)
         parameters['CoolingCoefficient'] = args.coefficient
     if args.coffee:
-        print("Coffee temperature value: ", args.coffee)
+        #print("Coffee temperature value: ", args.coffee)
         parameters['BaseTemperature'] = args.coffee
     if args.environment:
-        print("Environment temperature value: ", args.environment)
+        #print("Environment temperature value: ", args.environment)
         parameters['EnvironmentTemperature'] = args.environment
     if args.time:
-        print("Time range: ", args.time)
+        #print("Time range: ", args.time)
         parameters['TimeRange'] = args.time
     if args.segments:
-        print("Segments count: ", args.segments)
+        #print("Segments count: ", args.segments)
         parameters['SegmentsCount'] = args.segments
     if args.analytical:
         methods.append('analytical')
@@ -40,6 +40,6 @@ if __name__ == '__main__':
         methods.append('euler_enhanced')
     if args.RK4:
         methods.append('RK4')
+    print('{"data":[')
     for x in methods if len(methods) else CPC.defaultMethods:
-        print(eval(''.join(("json.dumps(CPC(parameters).", x, "(), sort_keys=True, indent=4, separators=(',', ': '))"))),
-              file=open(''.join((x, '.json')),'w'))
+        print(''.join((eval(''.join(("json.dumps(CPC(parameters).", x, "(), sort_keys=True, indent=4, separators=(',', ': '))"))), ',')))
