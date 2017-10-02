@@ -20,10 +20,11 @@
 				<div id="methods">
 					<form >
 					   <span class="form_headers"> Алгоритмы моделирования</span> <br>
-					   <p><input type="checkbox" name="Eiler" value="a1" checked>Метод Эйлера<Br>
-					   <input type="checkbox" name="ModernEiler" value="a2">Усовершенствованный метод Эйлера<Br>
-					   <input type="checkbox" name="RK" value="a3">Метод Рунге-Кутты<Br> 
-					   <input type="checkbox" name="Analythic" value="a4">Аналитический<Br> 
+                        <p><input title="Метод Эйлера" type="checkbox" name="Eiler" value="a1" checked>Метод Эйлера<Br>
+                            <input title="Усовершенствованный метод Эйлера" type="checkbox" name="ModernEiler"
+                                   value="a2">Усовершенствованный метод Эйлера<Br>
+                            <input title="Метод Рунге-Кутты" type="checkbox" name="RK" value="a3">Метод Рунге-Кутты<Br>
+                            <input title="Аналитический метод" type="checkbox" name="Analythic" value="a4">Аналитический<Br>
 					</form>
 				</div>
 
@@ -39,10 +40,11 @@
 											<mn>0</mn> 
 										</mrow>
 								</msub>
+                            </mstyle>
 						   </math>
 						</label>
 
-						<input type="temp" name="first_temp">
+                        <input id="temp" name="first_temp">
 						<span>°</span>
 					</form>
 				</div>
@@ -58,9 +60,10 @@
 											<mn>воздуха</mn> 
 										</mrow>
 								</msub>
+                            </mstyle>
 						   </math>
 						</label>
-						<input type="air_temp" name="air_temp">
+                        <input id="air_temp" name="air_temp">
 						<span>°</span>
 
 						<label for="cool_coef">
@@ -69,9 +72,10 @@
 						       <msub>
 									<mi>R</mi>
 								</msub>
+                            </mstyle>
 						   </math>
 						</label>
-						<input type="cool_coef" name="cool_coef"> <br>
+                        <input id="cool_coef" name="cool_coef"> <br>
 						<span class="form_headers ps ps1" >(где R - коэффициент остывания)</span>
 					</form>
 				</div>
@@ -88,9 +92,10 @@
 											<mn>max</mn> 
 										</mrow>
 								</msub>
+                            </mstyle>
 						   </math>
 						</label>
-						<input type="interval" name="interval">
+                        <input id="interval" name="interval">
 
 						<label for="step">
 							<math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -98,16 +103,17 @@
 						       <msub>
 									<mi>h</mi>
 								</msub>
+                            </mstyle>
 						   </math>
 						</label>
-						<input type="step" name="step"> <br>
+                        <input id="step" name="step"> <br>
 						<span class="form_headers ps ps2" >(где tmax - интервал, h - шаг)</span>
 					</form>
 				</div>
 
 				<div id="formula">
 					<math>
-						<mstyle displaystyle="true" fontsize="20px" fontstyle="italic">
+                        <mstyle fontsize="20px" fontstyle="italic">
 						<mfrac>
 							<mrow>
 								<mi>dT</mi> 
@@ -127,20 +133,18 @@
 							<mrow>
 								<mn>Окр. сред</mn> 
 							</mrow>
-							</msub> 
-						</mfenced> 
+                            </msub>
+                        </mfenced>
+                        </mstyle>
 					</math>
 				</div>
-
-
-				
 
 				<div id="lower">
 					<div id="bottom"> 
 						<form id="bottom_form">
-						   <p><b>Построить в виде:</b></p> <br>
-						    <input name="share" type="radio" value="graphic"> Графика
-						    <input name="share" type="radio" value="table"> Таблицы
+                            <p><strong>Построить в виде:</strong></p> <br>
+                            <input title="Построить график" name="share" type="radio" value="graphic"> Графика
+                            <input title="Построить таблицу" name="share" type="radio" value="table"> Таблицы
 						    <input type="submit" value="Построить">
 						</form> 
 					</div>
@@ -149,10 +153,3 @@
 	</div>
 </body>
 </html>
-	
-	
-	
-	
-	
-		
-	
