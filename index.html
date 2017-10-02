@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+	<script>window.MathJax = { MathML: { extensions: ["mml3.js", "content-mathml.js"]}};</script>
+	<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=MML_HTMLorMML"></script>
+</head>
+<body>
+	<div id="main_form">
+		
+		<div id="container">
+			<div id="process_name" align="center"> <span class="form_headers"> Моделирование процесса остывания кофе </span> </div><br> <hr>
+
+				<div id="methods">
+					<form >
+					   <span class="form_headers"> Алгоритмы моделирования</span> <br>
+					   <p><input type="checkbox" name="Eiler" value="a1" checked>Метод Эйлера<Br>
+					   <input type="checkbox" name="ModernEiler" value="a2">Усовершенствованный метод Эйлера<Br>
+					   <input type="checkbox" name="RK" value="a3">Метод Рунге-Кутты<Br> 
+					   <input type="checkbox" name="Analythic" value="a4">Аналитический<Br> 
+					</form>
+				</div>
+
+				<div id="first_cond">
+					<form>
+						<span class="form_headers"> Начальные условия </span> <br>
+						<label for="temp">
+							<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<mstyle fontfamily="'Open Sans Condensed', sans-serif" displaystyle="true" fontstyle="normal" fontsize="20px">
+						       <msub>
+									<mi>t</mi>
+										<mrow>
+											<mn>0</mn> 
+										</mrow>
+								</msub>
+						   </math>
+						</label>
+
+						<input type="temp" name="first_temp">
+						<span>°</span>
+					</form>
+				</div>
+				<div id="model_params">
+					<form>
+						<span class="form_headers"> Параметры модели</span> <br>
+						<label for="air_temp">
+							<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<mstyle fontfamily="'Open Sans Condensed', sans-serif" displaystyle="true" fontstyle="normal" fontsize="20px">
+						       <msub>
+									<mi>t</mi>
+										<mrow>
+											<mn>воздуха</mn> 
+										</mrow>
+								</msub>
+						   </math>
+						</label>
+						<input type="air_temp" name="air_temp">
+						<span>°</span>
+
+						<label for="cool_coef">
+							<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<mstyle fontfamily="'Open Sans Condensed', sans-serif" displaystyle="true" fontstyle="normal" fontsize="20px">
+						       <msub>
+									<mi>R</mi>
+								</msub>
+						   </math>
+						</label>
+						<input type="cool_coef" name="cool_coef"> <br>
+						<span class="form_headers ps ps1" >(где R - коэффициент остывания)</span>
+					</form>
+				</div>
+
+				<div id="scheme_params">
+					<form>
+						<span class="form_headers"> Параметры схемы</span> <br>
+						<label for="interval">
+							<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<mstyle fontfamily="'Open Sans Condensed', sans-serif" displaystyle="true" fontstyle="normal" fontsize="20px">
+						       <msub>
+									<mi>t</mi>
+										<mrow>
+											<mn>max</mn> 
+										</mrow>
+								</msub>
+						   </math>
+						</label>
+						<input type="interval" name="interval">
+
+						<label for="step">
+							<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<mstyle fontfamily="'Open Sans Condensed', sans-serif" displaystyle="true" fontstyle="normal" fontsize="20px">
+						       <msub>
+									<mi>h</mi>
+								</msub>
+						   </math>
+						</label>
+						<input type="step" name="step"> <br>
+						<span class="form_headers ps ps2" >(где tmax - интервал, h - шаг)</span>
+					</form>
+				</div>
+
+				<div id="formula">
+					<math>
+						<mstyle displaystyle="true" fontsize="20px" fontstyle="italic">
+						<mfrac>
+							<mrow>
+								<mi>dT</mi> 
+							</mrow>
+							<mrow>
+								<mi> dt </mi>
+							</mrow>
+						</mfrac>
+						<mo>=</mo>
+						<mi>-R</mi>
+						<mo>*</mo>
+						<mfenced open="(" close=")" separators=" "> 
+						    <mi>T(t)</mi> 
+						    <mo>-</mo>
+						    <msub>
+							<mi>t</mi>
+							<mrow>
+								<mn>Окр. сред</mn> 
+							</mrow>
+							</msub> 
+						</mfenced> 
+					</math>
+				</div>
+
+
+				
+
+				<div id="lower">
+					<div id="bottom"> 
+						<form id="bottom_form">
+						   <p><b>Построить в виде:</b></p> <br>
+						    <input name="share" type="radio" value="graphic"> Графика
+						    <input name="share" type="radio" value="table"> Таблицы
+						    <input type="submit" value="Построить">
+						</form> 
+					</div>
+				</div>
+		</div>
+	</div>
+</body>
+</html>
+	
+	
+	
+	
+	
+		
+	
