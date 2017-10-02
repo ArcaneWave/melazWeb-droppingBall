@@ -93,12 +93,12 @@ input {
 	outline: none;
 }
 
-#temp,
-#password,
-#air_temp,
-#cool_coef,
-#interval,
-#step {
+input[type=temp],
+input[type=password],
+input[type=air_temp],
+input[type=cool_coef],
+input[type=interval],
+input[type=step]  {
 	color: #777;
 	padding-left: 10px;
 	margin: 10px;
@@ -115,22 +115,22 @@ input {
 	margin-right: 2px;
 }
 
-#temp:hover,
-#password:hover,
-#air_temp:hover,
-#cool_coef:hover,
-#interval:focus,
-#step:focus {
+input[type=temp]:hover,
+input[type=password]:hover,
+input[type=air_temp]:hover,
+input[type=cool_coef]:hover,
+input[type=interval]:focus,
+input[type=step]:focus {
 	border: 1px solid #b6bfc0;
 	box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px #f5f7f8;
 }
 
-#temp:focus,
-#password:focus,
-#air_temp:focus,
-#cool_coef:focus,
-#interval:focus,
-#step:focus {
+input[type=temp]:focus,
+input[type=password]:focus,
+input[type=air_temp]:focus,
+input[type=cool_coef]:focus,
+input[type=interval]:focus,
+input[type=step]:focus {
 	border: 1px solid #a8c9e4;
 	box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #e6f2f9;
 }
@@ -144,7 +144,7 @@ input {
 	border-top: 1px solid #ccc;
 	border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 3px;
-	bottom: 0;
+	bottom: 0px;
 	float: left;
 }
 
@@ -194,6 +194,7 @@ input[type=submit]:active {
 /* Стили бара vladmaxi, можно удалить */
 .vladmaxi-top{
 	line-height: 24px;
+	font-size: 11px;
 	background: #eee;
 	text-transform: uppercase;
 	z-index: 9999;
@@ -201,24 +202,21 @@ input[type=submit]:active {
 	top:0;
 	left:0;
 	width:100%;
-	font-family: calibri, serif;
+	font-family: calibri;
 	font-size: 13px;
-	box-shadow: 1px 0 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
 	-webkit-animation: slideOut 0.5s ease-in-out 0.3s backwards;
 }
 @-webkit-keyframes slideOut{
 	0%{top:-30px; opacity: 0;}
-	100% {
-		top: 0;
-		opacity: 1;
-	}
+	100%{top:0px; opacity: 1;}
 }
 
 .vladmaxi-top a{
-	padding: 0 10px;
+	padding: 0px 10px;
 	letter-spacing: 1px;
 	color: #333;
-	text-shadow: 0 1px 1px #fff;
+	text-shadow: 0px 1px 1px #fff;
 	display: block;
 	float: left;
 }
@@ -247,7 +245,7 @@ header h1{
 	font-weight: 700;
 	font-style: normal;
 	font-size: 30px;
-	padding: 0 0 5px 0;
+	padding: 0px 0px 5px 0px;
 	text-shadow: 1px 1px 0 #000;
 }
 
@@ -315,3 +313,5 @@ header h1{
 	float: right;
 	margin: 32px 19px 0 0;
 }
+
+
