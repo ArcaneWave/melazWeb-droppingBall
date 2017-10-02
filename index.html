@@ -33,19 +33,20 @@
 						<span class="form_headers"> Начальные условия </span> <br>
 						<label for="temp">
 							<math xmlns="http://www.w3.org/1998/Math/MathML">
-							<mstyle fontfamily="'Open Sans Condensed', sans-serif" displaystyle="true" fontstyle="normal" fontsize="20px">
+                                <mstyle fontfamily="'Open Sans Condensed', sans-serif" displaystyle="true"
+                                        fontstyle="normal" mathsize="20px">
 						       <msub>
 									<mi>T</mi>
-										<mrow>
-											<mn>0</mn> 
-										</mrow>
+                                   <mrow>
+                                       <mn>0</mn>
+                                   </mrow>
 								</msub>
                             </mstyle>
 						   </math>
 						</label>
 
                         <input id="temp" name="first_temp">
-						<span>°</span>
+                        <span>°C</span>
 					</form>
 				</div>
 				<div id="model_params">
@@ -53,25 +54,25 @@
 						<span class="form_headers"> Параметры модели</span> <br>
 						<label for="air_temp">
 							<math xmlns="http://www.w3.org/1998/Math/MathML">
-							<mstyle fontfamily="'Open Sans Condensed', sans-serif" displaystyle="true" fontstyle="normal" fontsize="20px">
+                                <mstyle fontfamily="'Open Sans Condensed', sans-serif" displaystyle="true"
+                                        fontstyle="normal" mathsize="20px">
 						       <msub>
 									<mi>T</mi>
-										<mrow>
-											<mn>воздуха</mn> 
-										</mrow>
+                                   <mrow>
+                                       <mn>воздуха</mn>
+                                   </mrow>
 								</msub>
                             </mstyle>
 						   </math>
 						</label>
                         <input id="air_temp" name="air_temp">
-						<span>°</span>
+                        <span>°C</span>
 
 						<label for="cool_coef">
 							<math xmlns="http://www.w3.org/1998/Math/MathML">
-							<mstyle fontfamily="'Open Sans Condensed', sans-serif" displaystyle="true" fontstyle="normal" fontsize="20px">
-						       <msub>
-									<mi>r</mi>
-								</msub>
+                                <mstyle fontfamily="'Open Sans Condensed', sans-serif" displaystyle="true"
+                                        fontstyle="normal" mathsize="20px">
+                                    <mi>r</mi>
                             </mstyle>
 						   </math>
 						</label>
@@ -85,10 +86,9 @@
 						<span class="form_headers"> Параметры схемы</span> <br>
 						<label for="interval">
 							<math xmlns="http://www.w3.org/1998/Math/MathML">
-							<mstyle fontfamily="'Open Sans Condensed', sans-serif" displaystyle="true" fontstyle="normal" fontsize="20px">
-						       <msub>
-									<mi>t</mi>
-								</msub>
+                                <mstyle fontfamily="'Open Sans Condensed', sans-serif" displaystyle="true"
+                                        fontstyle="normal" mathsize="20px">
+                                    <mi>t</mi>
                             </mstyle>
 						   </math>
 						</label>
@@ -96,10 +96,9 @@
 
 						<label for="step">
 							<math xmlns="http://www.w3.org/1998/Math/MathML">
-							<mstyle fontfamily="'Open Sans Condensed', sans-serif" displaystyle="true" fontstyle="normal" fontsize="20px">
-						       <msub>
-									<mi>с</mi>
-								</msub>
+                                <mstyle fontfamily="'Open Sans Condensed', sans-serif" displaystyle="true"
+                                        fontstyle="normal" mathsize="20px">
+                                    <mi>с</mi>
                             </mstyle>
 						   </math>
 						</label>
@@ -111,7 +110,7 @@
 
 				<div id="formula">
 					<math>
-                        <mstyle fontsize="20px" fontstyle="italic">
+                        <mstyle mathsize="20px" fontstyle="italic">
 						<mfrac>
 							<mrow>
 								<mi>dT</mi> 
@@ -127,10 +126,10 @@
 						    <mi>T(t)</mi> 
 						    <mo>-</mo>
 						    <msub>
-							<mi>T</mi>
-							<mrow>
-								<mn>воздуха</mn> 
-							</mrow>
+                                <mi>T</mi>
+                                <mrow>
+                                    <mn>воздуха</mn>
+                                </mrow>
                             </msub>
                         </mfenced>
                         </mstyle>
