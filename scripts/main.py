@@ -1,6 +1,6 @@
 from models import CoolingProcessCalculation as CPC
 import argparse
-import json
+import json.__init__
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

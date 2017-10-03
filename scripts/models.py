@@ -1,6 +1,5 @@
 from math import exp
 
-
 class CoolingProcessCalculation:
     defaultMethods = [
         'analytical',
