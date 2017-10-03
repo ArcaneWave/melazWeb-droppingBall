@@ -1,6 +1,6 @@
 from models import CoolingProcessCalculation as CPC
 import argparse
-import json.__init__
+import json
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -15,22 +15,16 @@ if __name__ == '__main__':
     parser.add_argument('-sc', '--segments', help='segments count', type=int, metavar='')
     args = parser.parse_args()
 
-    parameters = {}
-    methods = []
+    parameters, methods = {}, []
     if args.coefficient:
-        #print("Temperature coefficient value: ", args.coefficient)
         parameters['CoolingCoefficient'] = args.coefficient
     if args.coffee:
-        #print("Coffee temperature value: ", args.coffee)
         parameters['BaseTemperature'] = args.coffee
     if args.environment:
-        #print("Environment temperature value: ", args.environment)
         parameters['EnvironmentTemperature'] = args.environment
     if args.time:
-        #print("Time range: ", args.time)
         parameters['TimeRange'] = args.time
     if args.segments:
-        #print("Segments count: ", args.segments)
         parameters['SegmentsCount'] = args.segments
     if args.analytical:
         methods.append('analytical')
@@ -40,6 +34,9 @@ if __name__ == '__main__':
         methods.append('euler_enhanced')
     if args.RK4:
         methods.append('RK4')
-    print('{"data":[')
+
+    data, cpc = [], CPC(parameters)
+    print('{"data":')
     for x in methods if len(methods) else CPC.defaultMethods:
-        print(''.join((eval(''.join(("json.dumps(CPC(parameters).", x, "(), sort_keys=True, indent=4, separators=(',', ': '))"))), ',')))
+        data.append(eval(''.join(("cpc.", x, "()"))))
+    print(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')), '\n}')

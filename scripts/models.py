@@ -1,11 +1,9 @@
 from math import exp
 
+
 class CoolingProcessCalculation:
     defaultMethods = [
-        'analytical',
-        'euler',
-        'euler_enhanced',
-        'RK4'
+        'analytical'
     ]
 
     defaultParameters = {
