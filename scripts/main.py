@@ -4,7 +4,7 @@ import json
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-tb', '--table', help='special formatted json output', action='store_true')
+    parser.add_argument('-gc', '--charts', help='google charts compatible json', action='store_true')
     parser.add_argument('-an', '--analytical', help='use analytical method', action='store_true')
     parser.add_argument('-eu', '--euler', help='use Euler method', action='store_true')
     parser.add_argument('-en', '--enhanced', help='use enhanced Euler method', action='store_true')
@@ -41,6 +41,6 @@ if __name__ == '__main__':
     for x in methods if len(methods) else CPC.defaultMethods:
         labels.append(x)
         data.append(eval(''.join(("cpc.", x, "()"))))
-    if args.table:
-        data = [labels, *([key, *cpc.googleLineChartFormattedData[key]] for key in cpc.googleLineChartFormattedData)]
+    if args.charts:
+        data = [labels, *([str(key), *cpc.googleLineChartFormattedData[key]] for key in cpc.googleLineChartFormattedData)]
     print(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')), '\n}')
