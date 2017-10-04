@@ -14,7 +14,7 @@ if (!empty($_POST)) {
         $argstring .= '-an ';
     }
     $argstring .= '-cc=' . $_POST['cool_coef'] . ' -ct=' . $_POST['first_temp'] . ' -et=' . $_POST['air_temp'] . ' -tr=' . $_POST['interval'] . ' -sc=' . $_POST['step'];
-    $json .= substr(shell_exec("~/.local/bin/python3 scripts/main.py $argstring"), 0, -2) . '}';
+    $json .= substr(shell_exec("/home/a/alexanei/.local/bin/python3 scripts/main.py $argstring"), 0, -2) . '}';
     file_put_contents('data.json', $json);
 
     switch ($_POST['share']) {
