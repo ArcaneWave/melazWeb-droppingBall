@@ -22,6 +22,7 @@ class CoolingProcessCalculation:
         self.SegmentsCount = parameters['SegmentsCount']
         self.Step = parameters['TimeRange'] / parameters['SegmentsCount']
         self.TemperatureDifference = self.BaseTemperature - self.EnvironmentTemperature
+        self.googleLineChartFormattedData = {k:[] for k in [self.Step * i for i in range(0, self.SegmentsCount)]}
 
     def _nloc(self, t):
         return -self.CoolingCoefficient * (t - self.EnvironmentTemperature)
@@ -31,29 +32,36 @@ class CoolingProcessCalculation:
 
     def analytical(self):
         result = {'Analytical': {0: self.BaseTemperature}}
-        for i in range(1, self.SegmentsCount + 1):
+        self.googleLineChartFormattedData[0].append(self.BaseTemperature)
+        for i in range(1, self.SegmentsCount):
             result['Analytical'][self.Step * i] = self._nloc_solution(self.Step * i)
+            self.googleLineChartFormattedData[self.Step * i].append(result['Analytical'][self.Step * i])
         return result
 
     def euler(self):
         result = {'Euler': {0: self.BaseTemperature}}
-        for i in range(0, self.SegmentsCount):
+        self.googleLineChartFormattedData[0].append(self.BaseTemperature)
+        for i in range(0, self.SegmentsCount - 1):
             result_i = result['Euler'][self.Step * i]
             result['Euler'][self.Step * (i + 1)] = result_i + self.Step * self._nloc(result_i)
+            self.googleLineChartFormattedData[self.Step * (i + 1)].append(result['Euler'][self.Step * (i + 1)])
         return result
 
     def euler_enhanced(self):
         result = {'Euler Enhanced': {0: self.BaseTemperature}}
-        for i in range(0, self.SegmentsCount):
+        self.googleLineChartFormattedData[0].append(self.BaseTemperature)
+        for i in range(0, self.SegmentsCount - 1):
             result_i = result['Euler Enhanced'][self.Step * i]
             k = result_i + self.Step * self._nloc(result_i)
             result['Euler Enhanced'][self.Step * (i + 1)] = result_i + self.Step * (self._nloc(result_i) +
                 self._nloc(k)) / 2.0
+            self.googleLineChartFormattedData[self.Step * (i + 1)].append(result['Euler Enhanced'][self.Step * (i + 1)])
         return result
 
     def RK4(self):
         result = {'RK4': {0: self.BaseTemperature}}
-        for i in range(0, self.SegmentsCount):
+        self.googleLineChartFormattedData[0].append(self.BaseTemperature)
+        for i in range(0, self.SegmentsCount - 1):
             result_i = result['RK4'][self.Step * i]
             k1 = self._nloc(result_i)
             k2 = self._nloc(result_i + self.Step * k1 / 2.0)
@@ -61,4 +69,5 @@ class CoolingProcessCalculation:
             k4 = self._nloc(result_i + self.Step * k3)
             k = result_i + self.Step * self._nloc(result_i)
             result['RK4'][self.Step * (i + 1)] = result_i + self.Step * (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0
+            self.googleLineChartFormattedData[self.Step * (i + 1)].append(result['RK4'][self.Step * (i + 1)])
         return result
