@@ -53,6 +53,5 @@ $n = count(array_keys(get_object_vars($json->data[0]->$existing_key)));
     } ?>
     </tbody>
 </table>
-
 </body>
 </html>
