@@ -6,13 +6,4 @@
  * Time: 6:09
  */
 
-echo json_encode(array(
-    'table' => [
-        ['Время', 'Температура'],
-        ['0', 80],
-        ['2', 68.9],
-        ['7', 52.8],
-        ['10', 47.8]
-    ],
-    'title' => isset($_POST['title']) ? $_POST['title'] : 'Зависимость по Эйлеру'
-));
+echo shell_exec('python scripts/main.py -gc ' . $_GET['args']);

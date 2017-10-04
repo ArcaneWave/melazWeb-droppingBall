@@ -8,7 +8,7 @@
 
 ?>
 
-<!DICKTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="ru">
 <head>
     <meta charset="utf8">
@@ -21,7 +21,7 @@
 
         function drawChart() {
             var myRequest = new XMLHttpRequest();
-            myRequest.open('GET', '/return.php');
+            myRequest.open('GET', '/return.php?args=' + document.getElementById('args').value);
             myRequest.send();
 
             myRequest.onreadystatechange = function () {
@@ -33,15 +33,30 @@
                     alert(myRequest.status + ': ' + myRequest.statusText);
                 } else {
                     var json = JSON.parse(myRequest.responseText);
+                    json.data.forEach(function (item, i) {
+                        if (i > 0) {
+                            item.forEach(function (item, i, arr) {
+                                arr[i] = parseFloat(item);
+                            });
+                        }
+                    });
 
-                    var data = new google.visualization.arrayToDataTable(json.table);
+                    console.log(json.data);
+
+                    var data = new google.visualization.arrayToDataTable(json.data);
 
                     var options = {
                         title: json.title,
                         width: 800,
                         height: 600,
                         curveType: 'function',
-                        legend: {position: 'bottom'}
+                        legend: {position: 'bottom'},
+                        explorer: {
+                            actions: ['dragToZoom', 'rightClickToReset'],
+                            axis: 'horizontal',
+                            keepInBounds: true,
+                            maxZoomIn: 10.0
+                        }
                     };
 
                     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -52,6 +67,7 @@
     </script>
 </head>
 <body>
+<input id="args" type="hidden" value="<?php echo file_get_contents('args.dat') ?>">
 <div id="chart_div"></div>
 </body>
 </html>
