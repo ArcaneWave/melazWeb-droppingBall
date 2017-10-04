@@ -23,6 +23,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="Main serever [Beget]">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="Palienko_FTP">
         <serverdata>
           <mappings>
@@ -58,6 +65,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="Валерий Меладзе">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="Кленин. 5 семестр">
         <serverdata>
           <mappings>
@@ -66,6 +80,13 @@
         </serverdata>
       </paths>
       <paths name="Магазин методичек">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Работы для Шевченко">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />

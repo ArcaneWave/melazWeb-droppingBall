@@ -6,7 +6,7 @@
  * Time: 3:46
  */
 
-$json = json_decode($_COOKIE['json']);
+$json = json_decode(file_get_contents('data.json'));
 
 $google_translate = array(
     'Euler' => 'Метод Эйлера',
@@ -20,6 +20,13 @@ $n = count(array_keys(get_object_vars($json->data[0]->$existing_key)));
 
 ?>
 
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <meta charset="utf8">
+    <title>Таблица результатов</title>
+</head>
+<body>
 <table cellspacing="5px" style="text-align: center">
     <caption>Результаты моделирования процесса остывания чашки кофе</caption>
     <thead>
@@ -46,3 +53,6 @@ $n = count(array_keys(get_object_vars($json->data[0]->$existing_key)));
     } ?>
     </tbody>
 </table>
+
+</body>
+</html>

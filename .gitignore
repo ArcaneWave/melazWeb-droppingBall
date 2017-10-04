@@ -2,3 +2,4 @@
 .idea/
 scripts/__pycache__/
 scripts/json/__pycache__/
+data.json
