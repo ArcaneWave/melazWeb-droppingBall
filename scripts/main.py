@@ -39,4 +39,4 @@ if __name__ == '__main__':
     print('{"data":')
     for x in methods if len(methods) else CPC.defaultMethods:
         data.append(eval(''.join(("cpc.", x, "()"))))
-    print(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')), '\n}')
+    print(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')), '\n}}')
