@@ -36,7 +36,7 @@ if __name__ == '__main__':
     if args.RK4:
         methods.append('RK4')
 
-    data, labels, cpc = [], ['methods'], CPC(parameters)
+    data, labels, cpc = [], ['time'], CPC(parameters)
     print('{\n"data":')
     for x in methods if len(methods) else CPC.defaultMethods:
         labels.append(x)
