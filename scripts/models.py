@@ -32,15 +32,15 @@ class CoolingProcessCalculation:
         return self.EnvironmentTemperature + exp(-t * self.CoolingCoefficient) * self.TemperatureDifference
 
     def _analytical(self):
-        result = {'Analytical': {0: self.BaseTemperature}}
+        result = {'Analytical': {0: [self.BaseTemperature, 0]}}
         for i in range(1, self.SegmentsCount):
-            result['Analytical'][self.Step * i] = self._nloc_solution(self.Step * i)
+            result['Analytical'][self.Step * i] = [self._nloc_solution(self.Step * i), 0]
         return result
 
     def analytical(self):
         self.googleLineChartFormattedData[0].append(self.BaseTemperature)
         for i in range(1, self.SegmentsCount):
-            self.googleLineChartFormattedData[self.Step * i].append(self.analyticalSolution['Analytical'][self.Step * i])
+            self.googleLineChartFormattedData[self.Step * i].append(self.analyticalSolution['Analytical'][self.Step * i][0])
         return self.analyticalSolution
 
     def euler(self):
