@@ -146,7 +146,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
                                                value="a2" <?php echo isset($_POST['ModernEuler']) ? 'checked' : '' ?>>Усовершенствованный метод Эйлера<Br>
                                         <input title="Метод Рунге-Кутты" type="checkbox" name="RK" value="a3" <?php echo isset($_POST['RK']) ? 'checked' : '' ?>>Метод Рунге-Кутты<Br>
                                         <input title="Аналитический метод" type="checkbox" name="Analythic"
-                                               value="a4" <?php echo isset($_POST['Analythic']) ? 'checked' : 'checked' ?>>Аналитический<Br>
+                                               value="a4" <?php echo isset($_POST['Analythic']) ? 'checked' : 'checked' ?>
+                                               disabled>Аналитический<Br>
                                 </fieldset>
                             </div>
 
