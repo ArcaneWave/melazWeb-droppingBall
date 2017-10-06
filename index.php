@@ -55,9 +55,10 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/styles.css">
-    <script type="text/javascript">
+    <?php if ($_POST['share'] == 'table') { ?>
+        <script type="text/javascript">
 
-        google.charts.load('current', {'packages': ['corechart']});
+            google.charts.load('current', {'packages': ['corechart']});
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
@@ -120,6 +121,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
             };
         }
     </script>
+    <?php } ?>
 </head>
 <body>
 
