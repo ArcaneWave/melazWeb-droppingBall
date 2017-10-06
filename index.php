@@ -56,7 +56,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/styles.css">
-    <?php if ($_POST['share'] == 'graphic') { ?>
+    <?php if ($_POST['share'] != 'table') { ?>
         <script type="text/javascript">
 
             google.charts.load('current', {'packages': ['corechart']});
@@ -145,7 +145,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
                                         <input title="Усовершенствованный метод Эйлера" type="checkbox" name="ModernEuler"
                                                value="a2" <?php echo isset($_POST['ModernEuler']) ? 'checked' : '' ?>>Усовершенствованный метод Эйлера<Br>
                                         <input title="Метод Рунге-Кутты" type="checkbox" name="RK" value="a3" <?php echo isset($_POST['RK']) ? 'checked' : '' ?>>Метод Рунге-Кутты<Br>
-                                        <input title="Аналитический метод" type="checkbox" name="Analythic" value="a4" <?php echo isset($_POST['Analythic']) ? 'checked' : '' ?>>Аналитический<Br>
+                                        <input title="Аналитический метод" type="checkbox" name="Analythic"
+                                               value="a4" <?php echo isset($_POST['Analythic']) ? 'checked' : 'checked' ?>>Аналитический<Br>
                                 </fieldset>
                             </div>
 

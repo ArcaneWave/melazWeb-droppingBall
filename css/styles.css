@@ -330,7 +330,7 @@ header h1{
     /*margin-top: 23px;*/
     width: 570px;
     height: 528px;
-    overflow: overlay;
+	overflow: auto;
 }
 
 @media (max-width: 1200px) {
