@@ -17,7 +17,7 @@ if (!empty($_POST)) {
         $argstring .= '-gc ';
     }
     $argstring .= '-cc="' . $_POST['cool_coef'] . '" -ct=' . $_POST['first_temp'] . ' -et=' . $_POST['air_temp'] . ' -tr=' . $_POST['interval'] . ' -sc=' . $_POST['step'];
-    $json = shell_exec("/home/a/alexanei/.local/bin/python3 $argstring");
+    $json = shell_exec("/home/a/alexanei/.local/bin/python3 scripts/main.py $argstring");
     $json = json_decode($json);
     $google_translate = array(
     'Euler' => 'Метод Эйлера',
@@ -42,9 +42,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 	<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=MML_HTMLorMML"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -297,7 +296,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
                             echo "<td>$time</td>";
                             foreach ($json->data as $data) {
                                 $key = array_keys(get_object_vars($data))[0];
-                                echo '<td>' . $data->$key->$time . '</td><td>0</td>';
+                                echo '<td>' . $data->$key->$time[0] . '</td><td>' . $data->$key->$time[1] . '</td>';
                             }
                             echo '</tr>';
                         } ?>
