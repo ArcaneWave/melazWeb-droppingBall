@@ -43,7 +43,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="></script>
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -283,7 +284,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
                         <thead>
                         <tr>
                             <th rowspan="2">№ шага</th>
-                            <th rowspan="2">Время, сек.</th><?php foreach ($json->data as $data) {
+                            <th rowspan="2">Время, мин.</th><?php foreach ($json->data as $data) {
                                 echo '<th colspan="2">' . $google_translate[array_keys(get_object_vars($data))[0]] . '</th>';
                             } ?></tr>
                         <tr><?php foreach ($json->data as $data) {
