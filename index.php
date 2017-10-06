@@ -142,7 +142,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
                                     <legend><span class="form_headers"> Алгоритмы моделирования</span></legend>
                                     <br>
                                     <p><input title="Метод Эйлера" type="checkbox" name="Euler" value="a1" <?php echo isset($_POST['Euler']) ? 'checked' : '' ?>>Метод Эйлера<Br>
-                                        <input title="Усовершенствованный метод Эйлера" type="checkbox" name="ModernEuler"
+                                        <input title="Улучшеннный метод Эйлера" type="checkbox" name="ModernEuler"
                                                value="a2" <?php echo isset($_POST['ModernEuler']) ? 'checked' : '' ?>>Усовершенствованный метод Эйлера<Br>
                                         <input title="Метод Рунге-Кутты" type="checkbox" name="RK" value="a3" <?php echo isset($_POST['RK']) ? 'checked' : '' ?>>Метод Рунге-Кутты<Br>
                                         <input title="Аналитический метод" type="checkbox" name="Analythic"
@@ -168,7 +168,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
                                         </math>
                                     </label>
 
-                                    <input id="temp" name="first_temp"  required value="<?php echo isset($_POST['first_temp']) ? $_POST['first_temp'] : 80 ?>">
+                                    <input type="number" id="temp" name="first_temp" required
+                                           value="<?php echo isset($_POST['first_temp']) ? $_POST['first_temp'] : 80 ?>">
                                     <span>°C</span>
                                 </fieldset>
                             </div>
@@ -189,7 +190,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
                                             </mstyle>
                                         </math>
                                     </label>
-                                    <input id="air_temp" name="air_temp" required value="<?php echo isset($_POST['air_temp']) ? $_POST['air_temp'] : 40 ?>">
+                                    <input type="number" id="air_temp" name="air_temp" required
+                                           value="<?php echo isset($_POST['air_temp']) ? $_POST['air_temp'] : 40 ?>">
                                     <span>°C</span>
 
                                     <label for="cool_coef">
@@ -200,7 +202,9 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
                                             </mstyle>
                                         </math>
                                     </label>
-                                    <input id="cool_coef" name="cool_coef" required value="<?php echo isset($_POST['cool_coef']) ? $_POST['cool_coef'] : 0.3 ?>"> <br>
+                                    <input type="number" id="cool_coef" name="cool_coef" required
+                                           value="<?php echo isset($_POST['cool_coef']) ? $_POST['cool_coef'] : 0.3 ?>">
+                                    <br>
                                     <span class="form_headers ps ps1" >(где r - коэффициент остывания)</span>
                                 </fieldset>
                             </div>
@@ -217,7 +221,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
                                             </mstyle>
                                         </math>
                                     </label>
-                                    <input id="interval" name="interval" required value="<?php echo isset($_POST['interval']) ? $_POST['interval'] : 10 ?>">
+                                    <input type="number" id="interval" name="interval" required
+                                           value="<?php echo isset($_POST['interval']) ? $_POST['interval'] : 10 ?>">
 
                                     <label for="step">
                                         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -227,7 +232,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
                                             </mstyle>
                                         </math>
                                     </label>
-                                    <input id="step" name="step" required value="<?php echo isset($_POST['step']) ? $_POST['step'] : 20 ?>"> <br>
+                                    <input type="number" id="step" name="step" required
+                                           value="<?php echo isset($_POST['step']) ? $_POST['step'] : 20 ?>"> <br>
                                     <span class="form_headers ps ps2" >(где t - интервал времени,
                 						<br> с - количество шагов)</span>
                                 </fieldset>
