@@ -19,6 +19,7 @@ if (!empty($_POST)) {
     $argstring .= '-cc="' . $_POST['cool_coef'] . '" -ct=' . $_POST['first_temp'] . ' -et=' . $_POST['air_temp'] . ' -tr=' . $_POST['interval'] . ' -sc=' . $_POST['step'];
     $argstring = urlencode($argstring);
     $json = shell_exec("/home/a/alexanei/.local/bin/python3 ../scripts/main.py $argstring");
+    $json = shell_exec("/home/a/alexanei/.local/bin/python3 ../scripts/main.py $argstring");
     $json = json_decode($json);
     $google_translate = array(
     'Euler' => 'Метод Эйлера',
@@ -233,7 +234,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
                                             </mstyle>
                                         </math>
                                     </label>
-                                    <input type="number" min="-99999" max="99999" id="interval" name="interval" required
+                                    <input type="number" min="0" max="99999" id="interval" name="interval" required
                                            value="<?php echo isset($_POST['interval']) ? $_POST['interval'] : 10 ?>">
 
                                     <label for="step">
@@ -244,7 +245,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
                                             </mstyle>
                                         </math>
                                     </label>
-                                    <input type="number" min="-99999" max="99999" id="step" name="step" required
+                                    <input type="number" min="0" max="99999" id="step" name="step" required
                                            value="<?php echo isset($_POST['step']) ? $_POST['step'] : 20 ?>"> <br>
                                     <span class="form_headers ps ps2" >(где t - интервал времени,
                 						<br> с - количество шагов)</span>
