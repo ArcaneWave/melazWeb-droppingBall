@@ -36,6 +36,9 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
 <head>
 	<meta charset="utf-8">
+    <title>Моделирование процесса остывания кофе</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="/images/favicon/favicon.ico">
 	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 	<script>window.MathJax = { MathML: { extensions: ["mml3.js", "content-mathml.js"]}};</script>
