@@ -19,6 +19,7 @@ if (!empty($_POST)) {
     $argstring .= '-cc="' . $_POST['cool_coef'] . '" -ct=' . $_POST['first_temp'] . ' -et=' . $_POST['air_temp'] . ' -tr=' . $_POST['interval'] . ' -sc=' . $_POST['step'];
     $argstring = urlencode($argstring);
     $json = shell_exec("/home/a/alexanei/.local/bin/python3 ../scripts/main.py $argstring");
+    $json = shell_exec("/home/a/alexanei/.local/bin/python3 ../scripts/main.py $argstring");
     $json = json_decode($json);
     $google_translate = array(
     'Euler' => 'Метод Эйлера',
