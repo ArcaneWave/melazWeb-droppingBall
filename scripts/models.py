@@ -50,7 +50,7 @@ class CoolingProcessCalculation:
             result_i = result['Euler'][self.Step * i][0]
             result['Euler'][self.Step * (i + 1)] = [result_i + self.Step * self._nloc(result_i)]
             result['Euler'][self.Step * (i + 1)].append(abs(result['Euler'][self.Step * (i + 1)][0] -
-                                                        self.analyticalSolution['Analytical'][self.Step * (i + 1)]))
+                                                        self.analyticalSolution['Analytical'][self.Step * (i + 1)][0]))
             self.googleLineChartFormattedData[self.Step * (i + 1)].append(result['Euler'][self.Step * (i + 1)][0])
         return result
 
@@ -63,7 +63,7 @@ class CoolingProcessCalculation:
             result['Euler Enhanced'][self.Step * (i + 1)] = [result_i + self.Step * (self._nloc(result_i) +
                 self._nloc(k)) / 2.0]
             result['Euler Enhanced'][self.Step * (i + 1)].append(abs(result['Euler Enhanced'][self.Step * (i + 1)][0] -
-                                                        self.analyticalSolution['Analytical'][self.Step * (i + 1)]))
+                                                        self.analyticalSolution['Analytical'][self.Step * (i + 1)][0]))
             self.googleLineChartFormattedData[self.Step * (i + 1)].append(result['Euler Enhanced'][self.Step * (i + 1)][0])
         return result
 
@@ -78,6 +78,6 @@ class CoolingProcessCalculation:
             k4 = self._nloc(result_i + self.Step * k3)
             result['RK4'][self.Step * (i + 1)] = [result_i + self.Step * (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0]
             result['RK4'][self.Step * (i + 1)].append(abs(result['RK4'][self.Step * (i + 1)][0] -
-                                                        self.analyticalSolution['Analytical'][self.Step * (i + 1)]))
+                                                        self.analyticalSolution['Analytical'][self.Step * (i + 1)][0]))
             self.googleLineChartFormattedData[self.Step * (i + 1)].append(result['RK4'][self.Step * (i + 1)][0])
         return result
