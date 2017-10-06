@@ -56,7 +56,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/styles.css">
-    <?php if ($_POST['share'] == 'table') { ?>
+    <?php if ($_POST['share'] == 'graphic') { ?>
         <script type="text/javascript">
 
             google.charts.load('current', {'packages': ['corechart']});
