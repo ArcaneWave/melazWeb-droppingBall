@@ -202,7 +202,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
                                             </mstyle>
                                         </math>
                                     </label>
-                                    <input type="number" id="cool_coef" name="cool_coef" required
+                                    <input type="number" step="0.01" id="cool_coef" name="cool_coef" required
                                            value="<?php echo isset($_POST['cool_coef']) ? $_POST['cool_coef'] : 0.3 ?>">
                                     <br>
                                     <span class="form_headers ps ps1" >(где r - коэффициент остывания)</span>
