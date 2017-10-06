@@ -299,7 +299,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
                             echo "<td>$time</td>";
                             foreach ($json->data as $data) {
                                 $key = array_keys(get_object_vars($data))[0];
-                                echo '<td>' . $data->$key->$time[0] . '</td><td>' . $data->$key->$time[1] . '</td>';
+                                $values = $data->$key->$time;
+                                echo '<td>' . $values[0] . '</td><td>' . $values[1] . '</td>';
                             }
                             echo '</tr>';
                         } ?>
