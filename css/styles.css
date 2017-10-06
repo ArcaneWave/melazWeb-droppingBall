@@ -350,7 +350,7 @@ header h1{
     font-size: 15px;
     text-shadow: 0.5px 0.6px 0px #fff;
     background: #eaebec;
-    margin: 20px;
+    /*margin: 20px;*/
     border: #ccc 1px solid;
     border-collapse: separate;
 
