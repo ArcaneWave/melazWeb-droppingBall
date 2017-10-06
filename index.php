@@ -141,12 +141,19 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
                                 <fieldset>
                                     <legend><span class="form_headers"> Алгоритмы моделирования</span></legend>
                                     <br>
-                                    <p><input title="Метод Эйлера" type="checkbox" name="Euler" value="a1" <?php echo isset($_POST['Euler']) ? 'checked' : '' ?>>Метод Эйлера<Br>
-                                        <input title="Улучшеннный метод Эйлера" type="checkbox" name="ModernEuler"
-                                               value="a2" <?php echo isset($_POST['ModernEuler']) ? 'checked' : '' ?>>Усовершенствованный метод Эйлера<Br>
-                                        <input title="Метод Рунге-Кутты" type="checkbox" name="RK" value="a3" <?php echo isset($_POST['RK']) ? 'checked' : '' ?>>Метод Рунге-Кутты<Br>
-                                        <input title="Аналитический метод" type="checkbox" name="Analythic"
-                                               value="a4" <?php echo isset($_POST['Analythic']) ? 'checked' : 'checked' ?>>Аналитический<Br>
+                                    <p class="methods"><label><input title="Метод Эйлера" type="checkbox" name="Euler"
+                                                                     value="a1" <?php echo isset($_POST['Euler']) ? 'checked' : '' ?>>
+                                            Метод Эйлера</label><Br>
+                                        <label><input title="Улучшеннный метод Эйлера" type="checkbox"
+                                                      name="ModernEuler"
+                                                      value="a2" <?php echo isset($_POST['ModernEuler']) ? 'checked' : '' ?>>
+                                            Усовершенствованный метод Эйлера</label><Br>
+                                        <label><input title="Метод Рунге-Кутты" type="checkbox" name="RK"
+                                                      value="a3" <?php echo isset($_POST['RK']) ? 'checked' : '' ?>>
+                                            Метод Рунге-Кутты</label><Br>
+                                        <label><input title="Аналитический метод" type="checkbox" name="Analythic"
+                                                      value="a4" <?php echo isset($_POST['Analythic']) ? 'checked' : 'checked' ?>>
+                                            Аналитический</label>
                                 </fieldset>
                             </div>
 
