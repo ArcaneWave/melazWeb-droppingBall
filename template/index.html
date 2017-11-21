@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Модель падения тел</title>
+
+    <link type="text/css" rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+
+
+
+
+
+        google.charts.load('current', {{ 'packages': ['corechart']}});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {{
+
+                app.coordinate_time_data.all = {coordinate_time_data};
+                app.coordinate_time_data.table = google.visualization.arrayToDataTable(app.coordinate_time_data.all);
+                app.coordinate_time_data.chart = new google.visualization.LineChart(document.getElementById('chart'));
+                app.coordinate_time_data.chart.draw(app.coordinate_time_data.table, app.coordinate_time_data.options);
+        }}
+    </script>
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Моделирование явления падения тел</h1>
+                <form method="post">
+                    <fieldset class="form-group">
+                        <legend>Параметры расчётной схемы</legend>
+
+                        <label for="experiment_time">Длительность эксперимента, с</label>
+                        <input step="0.001" id="experiment_time" name="experiment_time" type="number"
+                               class="form-control" value="{experiment_time}">
+
+                        <label for="step_amount">Число временных отсчётов</label>
+                        <input id="step_amount" name="step_amount" type="number" class="form-control"
+                               value="{step_amount}">
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <legend>Начальные условия</legend>
+
+                        <label for="start_coordinate">Высота тела в начальный момент времени, м</label>
+                        <input step="0.001" id="start_coordinate" name="start_coordinate" type="number"
+                               class="form-control" value="{start_coordinate}">
+
+                        <label for="start_velocity">Скорость тела в начальный момент времени, м/с</label>
+                        <input step="0.001" id="start_velocity" name="start_velocity" type="number" class="form-control"
+                               value="{start_velocity}">
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <legend>Параметры модели</legend>
+
+                        <div class="form-group">
+                            <label for="body_mass">Масса тела, кг</label>
+                            <input step="0.001" id="body_mass" name="body_mass" type="number" class="form-control"
+                                   value="{body_mass}">
+                        </div>
+
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="using_complex_gravity"
+                                       v-model="using_complex_gravity"> Сила тяжести
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="using_archimedes_force"
+                                       v-model="using_archimedes_force"> Сила
+                                Архимеда
+                            </label>
+                        </div>
+                        <fieldset v-if="using_archimedes_force" class="form-group">
+                            <label for="body_density">Плотность тела</label>
+                            <input id="body_density" step="0.001" name="body_density" type="number" class="form-control"
+                                   value="{body_density}">
+                        </fieldset>
+
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="using_environment_resistance"
+                                       v-model="using_environment_resistance">
+                                Сила сопротивления среды
+                            </label>
+                        </div>
+                        <fieldset v-if="using_environment_resistance" class="form-group">
+                            <label for="resistance_coefficient">Коэффициент сопротивления среды</label>
+                            <input step="0.001" id="resistance_coefficient" name="resistance_coefficient" type="number"
+                                   class="form-control" value="{resistance_coefficient}">
+                        </fieldset>
+
+                        <fieldset class="form-group" v-if="using_environment_resistance || using_archimedes_force">
+                            <label for="environment_density">Плотность окружающей среды</label>
+                            <input id="environment_density" step="0.001" name="environment_density" type="number"
+                                   class="form-control" value="{environment_density}">
+                        </fieldset>
+                    </fieldset>
+
+                    <button class="btn btn-primary">Рассчитать</button>
+                </form>
+            </div>
+            <div class="col-12 table-col">
+                <ul id="table-caption">
+                    <li>Начальные условия: \(y_0 = {start_coordinate}\ м, v_0 = {start_velocity}\ м/с\)</li>
+                    <li>Ускорение свободного падения: \(g = g(y)\)</li>
+                    <li>Действующие силы:
+                        <ol v-if="static_using_complex_gravity() || static_using_archimedes_force() || static_using_environment_resistance()">
+                            <li v-if="static_using_complex_gravity()">Сила тяжести</li>
+                            <li v-if="static_using_archimedes_force()">Сила Архимеда (\(\rho_{{тела}} = {body_density},
+                                \rho_{{среды}} = {environment_density}\))
+                            </li>
+                            <li v-if="static_using_environment_resistance()">Сила сопротивления среды (\(F =
+                                {resistance_coefficient}, \rho_{{среды}} = {environment_density}\))
+                            </li>
+                        </ol>
+                        <span v-else>Нет</span>
+                    </li>
+                </ul>
+                <div class="table-responsive">
+                    <table class="table" aria-describedby="table-caption" id="experiment-table">
+                        <thead>
+                        <tr>
+                            <th>Шаг, №</th>
+                            <th>Время, с</th>
+                            <th>Координата, м</th>
+                            <th>Скорость, м/с</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {table}
+                        </tbody>
+                    </table>
+                </div>
+                <a href="" type="button" class="btn" id="save-table" @click="save_table()">Сохранить</a>
+            </div>
+            <div class="col-md-6">
+                <div id="chart" class="half-screen-height"></div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col ball-environment">
+                        <img id="ball-1" class="ball" @click="animate_ball('ball-1')" src="/images/filled-circle.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.4/vue.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+</body>
+</html>
