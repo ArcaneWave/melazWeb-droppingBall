@@ -1,4 +1,4 @@
-#!usr/bin/python
+#!/home/a/alexanei/.local/bin/python3
 
 import cgi
 import html
