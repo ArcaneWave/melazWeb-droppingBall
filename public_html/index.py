@@ -1,4 +1,4 @@
-#!C:\Program Files (x86)\Python36-32\python.exe
+#!usr/bin/python
 
 import cgi
 import html
