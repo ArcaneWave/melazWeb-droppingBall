@@ -39,7 +39,7 @@ def get_checkbox_form_value(name: str):
     return True if html.escape(form.getfirst(name, '')) else False
 
 
-f_template = open('../template/index.html')
+f_template = open('../template/index.html', 'rt', encoding='utf-8')
 template = f_template.read()
 
 form = cgi.FieldStorage()

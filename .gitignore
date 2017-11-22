@@ -1,3 +1,5 @@
 .idea/
 scripts/__pycache__/
 scripts/json/__pycache__/
+alexanei.beget.tech.*.log*
+core/__pycache__/
