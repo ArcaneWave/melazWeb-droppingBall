@@ -11,12 +11,6 @@
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-
-
-
-
-
-
         google.charts.load('current', {{ 'packages': ['corechart']}});
         google.charts.setOnLoadCallback(drawChart);
 
@@ -65,7 +59,7 @@
 
                         <div class="form-group">
                             <label for="body_mass">Масса тела, кг</label>
-                            <input step="0.001" id="body_mass" name="body_mass" type="number" class="form-control"
+                            <input min="0" step="0.001" id="body_mass" name="body_mass" type="number" class="form-control"
                                    value="{body_mass}">
                         </div>
 
@@ -117,12 +111,12 @@
                     <li>Начальные условия: \(y_0 = {start_coordinate}\ м, v_0 = {start_velocity}\ м/с\)</li>
                     <li>Ускорение свободного падения: \(g = g(y)\)</li>
                     <li>Действующие силы:
-                        <ol v-if="static_using_complex_gravity() || static_using_archimedes_force() || static_using_environment_resistance()">
-                            <li v-if="static_using_complex_gravity()">Сила тяжести</li>
-                            <li v-if="static_using_archimedes_force()">Сила Архимеда (\(\rho_{{тела}} = {body_density},
+                        <ol v-if="using_complex_gravity || using_archimedes_force || using_environment_resistance">
+                            <li v-once v-if="using_complex_gravity">Сила тяжести</li>
+                            <li v-once v-if="using_archimedes_force">Сила Архимеда (\(\rho_{{тела}} = {body_density},
                                 \rho_{{среды}} = {environment_density}\))
                             </li>
-                            <li v-if="static_using_environment_resistance()">Сила сопротивления среды (\(F =
+                            <li v-once v-if="using_environment_resistance">Сила сопротивления среды (\(F =
                                 {resistance_coefficient}, \rho_{{среды}} = {environment_density}\))
                             </li>
                         </ol>
@@ -152,7 +146,7 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col ball-environment">
-                        <img id="ball-1" class="ball" @click="animate_ball('ball-1')" src="/images/filled-circle.svg">
+                        <img id="ball-1" class="ball" @click="animate_ball('ball-1')" :disabled="coordinate_time_data.flying == 1" src="/images/filled-circle.svg">
                     </div>
                 </div>
             </div>

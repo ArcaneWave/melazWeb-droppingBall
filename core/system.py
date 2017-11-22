@@ -98,7 +98,7 @@ class System:
             if self.environmentDensity > 10:
                 return self.resistanceCoefficient * self.currentVelocity
             else:
-                return self.resistanceCoefficient * self.currentVelocity * self.currentVelocity
+                return self.resistanceCoefficient * abs(self.currentVelocity) * self.currentVelocity
         else:
             return 0
 

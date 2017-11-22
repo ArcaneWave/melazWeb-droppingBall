@@ -33,7 +33,8 @@ const app = new Vue({
                 }
             },
             chart: null,
-            table: null
+            table: null,
+            flying: false
         },
     },
     methods: {
@@ -45,6 +46,10 @@ const app = new Vue({
             link.download = "table.xls";
         },
         animate_ball: function (id) {
+            if (this.coordinate_time_data.flying) {
+                return;
+            }
+
             let ball = document.getElementById(id);
             const h = (this.coordinate_time_data.all[2][0] - this.coordinate_time_data.all[1][0]) * 1000;
             const max = this.coordinate_time_data.all.slice(1).reduce(function (accumulator, currentValue) {
@@ -52,7 +57,10 @@ const app = new Vue({
             }, 0);
 
             step = function step(that) {
+                that.coordinate_time_data.flying = true;
+
                 if (i < that.coordinate_time_data.all.length) {
+
                     const xi = 50 - that.coordinate_time_data.all[i][1] * 50 / max;
                     const xi_1 = 50 - that.coordinate_time_data.all[i - 1][1] * 50 / max;
 
@@ -62,37 +70,19 @@ const app = new Vue({
                     }, h);
 
                     if (xi === 50) {
+                        that.coordinate_time_data.flying = false;
                         return;
                     }
 
                     i++;
                     setTimeout(step, h, that);
+                } else {
+                    that.coordinate_time_data.flying = false;
                 }
             };
 
             let i = 2;
             step(this);
-        },
-        static_using_complex_gravity: function () {
-            if (!this.static_vars.hasOwnProperty('using_complex_gravity')) {
-                this.static_vars.using_complex_gravity = this.using_complex_gravity;
-            }
-
-            return this.static_vars.using_complex_gravity;
-        },
-        static_using_archimedes_force: function () {
-            if (!this.static_vars.hasOwnProperty('using_archimedes_force')) {
-                this.static_vars.using_archimedes_force = this.using_archimedes_force;
-            }
-
-            return this.static_vars.using_archimedes_force;
-        },
-        static_using_environment_resistance: function () {
-            if (!this.static_vars.hasOwnProperty('using_environment_resistance')) {
-                this.static_vars.using_environment_resistance = this.using_environment_resistance;
-            }
-
-            return this.static_vars.using_environment_resistance;
         }
     }
 });
