@@ -75,7 +75,7 @@ table = ''
 coordinate_time_data = "['Time', 'Object 1'],"
 for i in range(res_len):
     table += '<tr><td>' + str(i) + '</td><td>' + str('%5.3f' % res[0][i]) + '</td><td>' + str('%12.3f' % res[1][i]) + \
-             '</td><td>' + str('%93.f' % res[2][i]) + '</td></tr>'
+             '</td><td>' + str('%9.3f' % res[2][i]) + '</td></tr>'
     coordinate_time_data += '[%5.3f' % res[0][i] + ', %12.3f' % res[1][i] + ']'
 
     if not res[1][i]:
