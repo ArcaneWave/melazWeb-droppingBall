@@ -31,7 +31,7 @@ def get_int_form_value(name: str, default_value: int):
     return safe_int_cast(html.escape(form.getfirst(name, str(default_value))), default_value)
 
 
-def get_float_form_value(name: str, default_value: int):
+def get_float_form_value(name: str, default_value: float):
     return safe_float_cast(html.escape(form.getfirst(name, str(default_value))), default_value)
 
 
@@ -51,7 +51,7 @@ step_amount = get_int_form_value('step_amount', 100)
 body_density = get_float_form_value('body_density', 4200)
 environment_density = get_float_form_value('environment_density', 4000)
 resistance_coefficient = get_float_form_value('resistance_coefficient', 1)
-body_mass = get_float_form_value('body_mass', 0)
+body_mass = get_float_form_value('body_mass', 0.001)
 
 using_complex_gravity = get_checkbox_form_value('using_complex_gravity')
 using_archimedes_force = get_checkbox_form_value('using_archimedes_force')
