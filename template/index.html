@@ -59,7 +59,7 @@
 
                         <div class="form-group">
                             <label for="body_mass">Масса тела, кг</label>
-                            <input min="0" step="0.001" id="body_mass" name="body_mass" type="number" class="form-control"
+                            <input min="0.001" step="0.001" id="body_mass" name="body_mass" type="number" class="form-control"
                                    value="{body_mass}">
                         </div>
 
@@ -112,11 +112,11 @@
                     <li>Ускорение свободного падения: \(g = g(y)\)</li>
                     <li>Действующие силы:
                         <ol v-if="using_complex_gravity || using_archimedes_force || using_environment_resistance">
-                            <li v-once v-if="using_complex_gravity">Сила тяжести</li>
-                            <li v-once v-if="using_archimedes_force">Сила Архимеда (\(\rho_{{тела}} = {body_density},
+                            <li v-if="using_complex_gravity">Сила тяжести</li>
+                            <li v-if="using_archimedes_force">Сила Архимеда (\(\rho_{{тела}} = {body_density},
                                 \rho_{{среды}} = {environment_density}\))
                             </li>
-                            <li v-once v-if="using_environment_resistance">Сила сопротивления среды (\(F =
+                            <li v-if="using_environment_resistance">Сила сопротивления среды (\(F =
                                 {resistance_coefficient}, \rho_{{среды}} = {environment_density}\))
                             </li>
                         </ol>
@@ -146,7 +146,7 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col ball-environment">
-                        <img id="ball-1" class="ball" @click="animate_ball('ball-1')" :disabled="coordinate_time_data.flying == 1" src="/images/filled-circle.svg">
+                        <img id="ball-1" class="ball" @click="animate_ball('ball-1')" src="/images/filled-circle.svg">
                     </div>
                 </div>
             </div>
