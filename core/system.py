@@ -33,6 +33,8 @@ class System:
         self.linearResistanceCoefficient = self.get_resistance_coefficient()  # Calculate using gotten data
 
     def perform_experiment(self):
+        print (self.get_maximum_speed())
+
         self.result[0][0] = self.currentTime
         self.result[1][0] = self.currentCoordinate
         self.result[2][0] = self.currentVelocity
