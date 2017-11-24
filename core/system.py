@@ -1,3 +1,5 @@
+from math import sqrt
+
 class System:
     def __init__(self,
                  body_mass=0, start_coordinate=100, start_velocity=0, experiment_time=10, step_amount=100,  # Main
@@ -31,6 +33,8 @@ class System:
         self.linearResistanceCoefficient = self.get_resistance_coefficient()  # Calculate using gotten data
 
     def perform_experiment(self):
+        print (self.get_maximum_speed())
+
         self.result[0][0] = self.currentTime
         self.result[1][0] = self.currentCoordinate
         self.result[2][0] = self.currentVelocity
@@ -44,7 +48,15 @@ class System:
             if self.currentVelocity > 0:
                 resistance *= -1
             current_resultant = -gravity + arch_force + resistance
+
             self.currentVelocity = self.currentVelocity + current_resultant * self.step
+
+            if abs(self.currentVelocity) > abs(self.get_maximum_speed()):
+                if (self.currentVelocity) > 0:
+                    self.currentVelocity = self.get_maximum_speed()
+                else:
+                    self.currentVelocity = -self.get_maximum_speed()
+
             self.currentCoordinate = self.currentCoordinate + self.currentVelocity * self.step
 
             if self.currentCoordinate <= 0:
@@ -95,7 +107,7 @@ class System:
 
     def get_environment_resistance_force(self):
         if self.usingEnvironmentResistance:
-            if self.environmentDensity > 10:
+            if (self.environmentDensity > 10):
                 return self.resistanceCoefficient * self.currentVelocity
             else:
                 return self.resistanceCoefficient * abs(self.currentVelocity) * self.currentVelocity
@@ -105,3 +117,12 @@ class System:
     # Main
     def get_current_speed(self, current_time, current_resultant):
         return self.currentVelocity - current_resultant * current_time
+
+    def get_maximum_speed(self):
+        if (self.usingEnvironmentResistance):
+            if (self.environmentDensity > 10):
+                return self.bodyMass * self.get_current_gravity() / self.resistanceCoefficient
+            else:
+                return sqrt(self.bodyMass * self.get_current_gravity() / self.resistanceCoefficient)
+        else:
+            return 9999999999999
